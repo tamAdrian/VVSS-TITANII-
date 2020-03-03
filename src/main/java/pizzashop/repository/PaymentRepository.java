@@ -6,12 +6,13 @@ import pizzashop.model.Payment;
 import pizzashop.model.PaymentType;
 
 import java.io.*;
+import java.net.URISyntaxException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.StringTokenizer;
 
 public class PaymentRepository {
-    private static String filename = "data/payments.txt";
+    private static String filename = "/data/payments.txt";
     private List<Payment> paymentList;
 
     public PaymentRepository(){
@@ -20,20 +21,24 @@ public class PaymentRepository {
     }
 
     private void readPayments(){
-        ClassLoader classLoader = PaymentRepository.class.getClassLoader();
-        File file = new File(classLoader.getResource(filename).getFile());
-        BufferedReader br = null;
+        File file = null;
         try {
-            br = new BufferedReader(new FileReader(file));
-            String line = null;
-            while((line=br.readLine())!=null){
-                Payment payment=getPayment(line);
-                paymentList.add(payment);
+            file = new File( PaymentRepository.class.getResource( "/data/payments.txt" ).toURI() );
+
+            BufferedReader br = null;
+            try {
+                br = new BufferedReader(new FileReader(file));
+                String line = null;
+                while((line=br.readLine())!=null){
+                    Payment payment=getPayment(line);
+                    paymentList.add(payment);
+                }
+                br.close();
+            } catch (IOException e) {
+                e.printStackTrace();
             }
-            br.close();
-        } catch (FileNotFoundException e) {
-            e.printStackTrace();
-        } catch (IOException e) {
+
+        } catch (URISyntaxException e) {
             e.printStackTrace();
         }
     }
@@ -59,21 +64,25 @@ public class PaymentRepository {
     }
 
     public void writeAll(){
-        ClassLoader classLoader = PaymentRepository.class.getClassLoader();
-        File file = new File(classLoader.getResource(filename).getFile());
-
-        BufferedWriter bw = null;
+        File file = null;
         try {
-            bw = new BufferedWriter(new FileWriter(file));
-            for (Payment p:paymentList) {
-                System.out.println(p.toString());
-                bw.write(p.toString());
-                bw.newLine();
+            file = new File( PaymentRepository.class.getResource( "/data/payments.txt" ).toURI() );
+            BufferedWriter bw = null;
+            try {
+                bw = new BufferedWriter(new FileWriter(file));
+                for (Payment p:paymentList) {
+                    System.out.println(p.toString());
+                    bw.write(p.toString());
+                    bw.newLine();
+                }
+                bw.close();
+            } catch (IOException e) {
+                e.printStackTrace();
             }
-            bw.close();
-        } catch (IOException e) {
+        } catch (URISyntaxException e) {
             e.printStackTrace();
         }
+
     }
 
 }
