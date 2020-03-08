@@ -1,78 +1,69 @@
 package pizzashop.repository;
 
-import javafx.collections.ObservableList;
-import pizzashop.model.MenuDataModel;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
 import pizzashop.model.Payment;
 import pizzashop.model.PaymentType;
 
 import java.io.*;
+import java.net.URISyntaxException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.StringTokenizer;
 
 public class PaymentRepository {
-    private static String filename = "data/payments.txt";
+    private static String filename = "/data/payments.txt";
     private List<Payment> paymentList;
+    private static final Logger logger = Logger.getAnonymousLogger();
 
-    public PaymentRepository(){
+    public PaymentRepository() {
         this.paymentList = new ArrayList<>();
         readPayments();
     }
 
-    private void readPayments(){
-        ClassLoader classLoader = PaymentRepository.class.getClassLoader();
-        File file = new File(classLoader.getResource(filename).getFile());
-        BufferedReader br = null;
-        try {
-            br = new BufferedReader(new FileReader(file));
+    private void readPayments() {
+        try (BufferedReader br = new BufferedReader(new FileReader(new File(PaymentRepository.class.getResource(filename).toURI())))) {
             String line = null;
-            while((line=br.readLine())!=null){
-                Payment payment=getPayment(line);
+            while ((line = br.readLine()) != null) {
+                Payment payment = getPayment(line);
                 paymentList.add(payment);
             }
-            br.close();
-        } catch (FileNotFoundException e) {
-            e.printStackTrace();
-        } catch (IOException e) {
-            e.printStackTrace();
+        } catch (URISyntaxException | IOException e) {
+            logger.log(Level.WARNING, e.getMessage());
         }
     }
 
-    private Payment getPayment(String line){
-        Payment item=null;
-        if (line==null|| line.equals("")) return null;
-        StringTokenizer st=new StringTokenizer(line, ",");
-        int tableNumber= Integer.parseInt(st.nextToken());
-        String type= st.nextToken();
+    private Payment getPayment(String line) {
+        Payment item = null;
+        if (line == null || line.equals("")) return null;
+        StringTokenizer st = new StringTokenizer(line, ",");
+        int tableNumber = Integer.parseInt(st.nextToken());
+        String type = st.nextToken();
         double amount = Double.parseDouble(st.nextToken());
         item = new Payment(tableNumber, PaymentType.valueOf(type), amount);
         return item;
     }
 
-    public void add(Payment payment){
+    public void add(Payment payment) {
         paymentList.add(payment);
         writeAll();
     }
 
-    public List<Payment> getAll(){
+    public List<Payment> getAll() {
         return paymentList;
     }
 
-    public void writeAll(){
-        ClassLoader classLoader = PaymentRepository.class.getClassLoader();
-        File file = new File(classLoader.getResource(filename).getFile());
-
-        BufferedWriter bw = null;
-        try {
-            bw = new BufferedWriter(new FileWriter(file));
-            for (Payment p:paymentList) {
-                System.out.println(p.toString());
+    public void writeAll() {
+        try (BufferedWriter bw = new BufferedWriter(new FileWriter(new File(PaymentRepository.class.getResource(filename).toURI())))) {
+            for (Payment p : paymentList) {
+                String logInfo = p.toString();
+                logger.log(Level.INFO, logInfo);
                 bw.write(p.toString());
                 bw.newLine();
             }
-            bw.close();
-        } catch (IOException e) {
-            e.printStackTrace();
+        } catch (URISyntaxException | IOException e) {
+            logger.log(Level.WARNING, e.getMessage());
         }
     }
 
