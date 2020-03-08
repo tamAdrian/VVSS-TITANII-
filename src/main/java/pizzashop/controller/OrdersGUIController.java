@@ -9,7 +9,7 @@ import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Stage;
 import pizzashop.model.MenuDataModel;
-import pizzashop.service.PaymentAlert;
+import pizzashop.gui.PaymentAlert;
 import pizzashop.service.PizzaService;
 
 import java.util.Calendar;
