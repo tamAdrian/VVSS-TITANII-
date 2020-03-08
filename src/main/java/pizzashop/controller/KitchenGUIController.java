@@ -44,14 +44,12 @@ public class KitchenGUIController {
         addOrders.setDaemon(true);
         addOrders.start();
         //Controller for Cook Button
-        cook.setOnAction(event -> {
-            selectedOrder = kitchenOrdersList.getSelectionModel().getSelectedItem();
-            kitchenOrdersList.getItems().remove(selectedOrder);
-            kitchenOrdersList.getItems().add(selectedOrder.toString()
-                     .concat(" Cooking started at: ").toUpperCase()
-                     .concat(now.get(Calendar.HOUR)+":"+now.get(Calendar.MINUTE)));
-        });
+        cookAction();
         //Controller for Ready Button
+        readyAction();
+    }
+
+    private void readyAction() {
         ready.setOnAction(event -> {
             selectedOrder = kitchenOrdersList.getSelectionModel().getSelectedItem();
             kitchenOrdersList.getItems().remove(selectedOrder);
@@ -61,6 +59,16 @@ public class KitchenGUIController {
             String logInfo = "Table " + extractedTableNumberInteger + " ready at: " + now.get(Calendar.HOUR) + ":" + now.get(Calendar.MINUTE);
             logger.log(Level.INFO, logInfo);
             logger.log(Level.INFO, SEPARATOR);
+        });
+    }
+
+    private void cookAction() {
+        cook.setOnAction(event -> {
+            selectedOrder = kitchenOrdersList.getSelectionModel().getSelectedItem();
+            kitchenOrdersList.getItems().remove(selectedOrder);
+            kitchenOrdersList.getItems().add(selectedOrder.toString()
+                     .concat(" Cooking started at: ").toUpperCase()
+                     .concat(now.get(Calendar.HOUR)+":"+now.get(Calendar.MINUTE)));
         });
     }
 }

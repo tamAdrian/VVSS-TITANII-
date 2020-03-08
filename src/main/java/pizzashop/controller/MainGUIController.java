@@ -88,6 +88,10 @@ public class MainGUIController {
 
     public void initialize() {
 
+        helpAction();
+    }
+
+    private void helpAction() {
         help.setOnAction((ActionEvent event) -> {
             Stage stage = new Stage();
 

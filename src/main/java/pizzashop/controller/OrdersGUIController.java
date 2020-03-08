@@ -82,6 +82,20 @@ public class OrdersGUIController {
         orderTable.setItems(menuData);
 
         //Controller for Place Order Button
+        placeOrderAction();
+
+        //Controller for Order Served Button
+        orderServedAction();
+
+        //Controller for Pay Order Button
+        payOrderAction();
+    }
+
+    private void orderServedAction() {
+        orderServed.setOnAction(event -> orderStatus.setText("Served at: " + now.get(Calendar.HOUR) + ":" + now.get(Calendar.MINUTE)));
+    }
+
+    private void placeOrderAction() {
         placeOrder.setOnAction(event -> {
             orderList = menuData.stream()
                     .filter(x -> x.getQuantity() > 0)
@@ -91,11 +105,9 @@ public class OrdersGUIController {
             KitchenGUIController.order.add("Table" + tableNumber + " " + orderList.toString());
             orderStatus.setText("Order placed at: " + now.get(Calendar.HOUR) + ":" + now.get(Calendar.MINUTE));
         });
+    }
 
-        //Controller for Order Served Button
-        orderServed.setOnAction(event -> orderStatus.setText("Served at: " + now.get(Calendar.HOUR) + ":" + now.get(Calendar.MINUTE)));
-
-        //Controller for Pay Order Button
+    private void payOrderAction() {
         payOrder.setOnAction(event -> {
             orderPaymentList = menuData.stream()
                     .filter(x -> x.getQuantity() > 0)
@@ -132,15 +144,13 @@ public class OrdersGUIController {
         orderQuantity.setPromptText("Quantity");
 
         //Controller for Add to order Button
-        addToOrder.setOnAction(event -> orderTable.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<MenuDataModel>() {
-            @Override
-            public void changed(ObservableValue<? extends MenuDataModel> observable, MenuDataModel oldValue, MenuDataModel newValue) {
-                oldValue.setQuantity(orderQuantity.getValue());
-                orderTable.getSelectionModel().selectedItemProperty().removeListener(this);
-            }
-        }));
+        addToOrderAction();
 
         //Controller for Exit table Button
+        newOrderAction();
+    }
+
+    private void newOrderAction() {
         newOrder.setOnAction(event -> {
             Alert exitAlert = new Alert(Alert.AlertType.CONFIRMATION, "Exit table?", ButtonType.YES, ButtonType.NO);
             Optional<ButtonType> result = exitAlert.showAndWait();
@@ -149,5 +159,15 @@ public class OrdersGUIController {
                 stage.close();
             }
         });
+    }
+
+    private void addToOrderAction() {
+        addToOrder.setOnAction(event -> orderTable.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<MenuDataModel>() {
+            @Override
+            public void changed(ObservableValue<? extends MenuDataModel> observable, MenuDataModel oldValue, MenuDataModel newValue) {
+                oldValue.setQuantity(orderQuantity.getValue());
+                orderTable.getSelectionModel().selectedItemProperty().removeListener(this);
+            }
+        }));
     }
 }
