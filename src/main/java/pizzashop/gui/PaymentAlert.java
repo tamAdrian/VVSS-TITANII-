@@ -58,8 +58,6 @@ public class PaymentAlert implements PaymentOperation {
         } else if (result.isPresent() && result.get() == cashPayment) {
             cashPayment();
             service.addPayment(tableNumber, PaymentType.CASH, totalAmount);
-        } else if (result.isPresent() && result.get() == cancel) {
-            cancelPayment();
         } else {
             cancelPayment();
         }
