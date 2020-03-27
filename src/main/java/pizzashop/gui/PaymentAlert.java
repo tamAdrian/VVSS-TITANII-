@@ -42,7 +42,7 @@ public class PaymentAlert implements PaymentOperation {
         logger.log(Level.INFO, SEPARATOR);
     }
 
-    public void showPaymentAlert(int tableNumber, double totalAmount) {
+    public void showPaymentAlert(int tableNumber, double totalAmount) throws Exception {
         Alert paymentAlert = new Alert(Alert.AlertType.CONFIRMATION);
         paymentAlert.setTitle("Payment for Table " + tableNumber);
         paymentAlert.setHeaderText("Total amount: " + totalAmount);

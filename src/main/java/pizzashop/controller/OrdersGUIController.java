@@ -120,7 +120,11 @@ public class OrdersGUIController {
             logger.log(Level.INFO, "Total: " + getTotalAmount());
             logger.log(Level.INFO, SEPARATOR);
             PaymentAlert pay = new PaymentAlert(service);
-            pay.showPaymentAlert(tableNumber, getTotalAmount());
+            try {
+                pay.showPaymentAlert(tableNumber, getTotalAmount());
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
         });
     }
 

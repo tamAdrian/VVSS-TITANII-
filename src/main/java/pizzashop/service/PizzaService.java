@@ -26,9 +26,13 @@ public class PizzaService {
         return payRepo.getAll();
     }
 
-    public void addPayment(int table, PaymentType type, double amount) {
-        Payment payment = new Payment(table, type, amount);
-        payRepo.add(payment);
+    public void addPayment(int table, PaymentType type, double amount) throws Exception {
+        if (table >= 1 && table <= 8 && amount > 0) {
+            Payment payment = new Payment(table, type, amount);
+            payRepo.add(payment);
+        } else {
+            throw  new Exception("invalid parameters");
+        }
     }
 
     public double getTotalAmount(PaymentType type) {
