@@ -13,7 +13,7 @@ import java.util.List;
 import java.util.StringTokenizer;
 
 public class PaymentRepository {
-    private static String filename = "/data/payments.txt";
+    private String filename = "/data/payments.txt";
     private List<Payment> paymentList;
     private static final Logger logger = Logger.getAnonymousLogger();
 
@@ -22,14 +22,20 @@ public class PaymentRepository {
         readPayments();
     }
 
+    public PaymentRepository(String filename) {
+        this.filename = filename;
+        readPayments();
+    }
+
     private void readPayments() {
         try (BufferedReader br = new BufferedReader(new FileReader(new File(PaymentRepository.class.getResource(filename).toURI())))) {
+            this.paymentList = new ArrayList<>();
             String line = null;
             while ((line = br.readLine()) != null) {
                 Payment payment = getPayment(line);
                 paymentList.add(payment);
             }
-        } catch (URISyntaxException | IOException e) {
+        } catch (URISyntaxException | NullPointerException | IOException e) {
             logger.log(Level.WARNING, e.getMessage());
         }
     }
