@@ -35,7 +35,7 @@ class PizzaServiceGetTotalAmountTest {
     @Test
     void testP01() {
         paymentRepository = new PaymentRepository("ds.txt");
-        PizzaService service = new PizzaService(menuRepository, paymentRepository);
+        service = new PizzaService(menuRepository, paymentRepository);
         assertEquals(service.getTotalAmount(paymentType), 0.0f);
     }
 
@@ -43,7 +43,7 @@ class PizzaServiceGetTotalAmountTest {
     @Test
     void testP02() {
         paymentRepository = new PaymentRepository(fileName);
-        PizzaService service = new PizzaService(menuRepository, paymentRepository);
+        service = new PizzaService(menuRepository, paymentRepository);
         assertEquals(service.getTotalAmount(paymentType), 0.0f);
     }
 

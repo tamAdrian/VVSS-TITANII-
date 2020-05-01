@@ -17,11 +17,11 @@ f
 6src/main/java/pizzashop/repository/MenuRepository.java,f\8\f88a69fdfce80aab608fa2398a93044f03454ca7
 k
 ;src/main/java/pizzashop/controller/OrdersGUIController.java,9\5\9593d6c2aae59b75f1c5ffdb8bb3a549a0c0d8d6
-e
-5src/main/java/pizzashop/service/PaymentOperation.java,8\6\862d4eb199283e0e9c78f504b07ec47424c924ff
 a
 1src/main/java/pizzashop/service/PizzaService.java,4\7\47bdc6c9cb205db26d090cbf3e15cc256314b822
-a
-1src/main/java/pizzashop/service/PaymentAlert.java,9\0\902001140ed6ee8dd55076f5d2572971ee237995
 [
 +src/main/java/pizzashop/gui/KitchenGUI.java,8\5\8520f08e22c256d40d132e4ce1d91ee5494663f3
+e
+5src/main/java/pizzashop/service/PizzaServiceTest.java,c\7\c7c517146458325cbe5169b54d0957bc6423ca62
+s
+Csrc/main/java/pizzashop/service/PizzaServiceGetTotalAmountTest.java,b\1\b126c4740967c611903a02ae9bfe77a67edf711a
