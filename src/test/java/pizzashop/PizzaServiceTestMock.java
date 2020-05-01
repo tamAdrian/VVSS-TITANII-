@@ -1,4 +1,4 @@
-package pizzashop.service;
+package pizzashop;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -9,6 +9,7 @@ import pizzashop.model.Payment;
 import pizzashop.model.PaymentType;
 import pizzashop.repository.MenuRepository;
 import pizzashop.repository.PaymentRepository;
+import pizzashop.service.PizzaService;
 
 import java.io.BufferedWriter;
 import java.io.File;

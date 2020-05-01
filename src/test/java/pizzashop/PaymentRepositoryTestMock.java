@@ -1,13 +1,8 @@
-package pizzashop.service;
+package pizzashop;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import org.mockito.Mock;
-import org.mockito.Mockito;
-import org.mockito.MockitoAnnotations;
 import pizzashop.model.Payment;
-import pizzashop.model.PaymentType;
-import pizzashop.repository.MenuRepository;
 import pizzashop.repository.PaymentRepository;
 
 import java.io.BufferedWriter;
@@ -15,20 +10,15 @@ import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.net.URISyntaxException;
+
 import static org.mockito.Mockito.mock;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-class PizzaServiceTestIntegrationStep2 {
+class PaymentRepositoryTestMock {
 
     private String fileName = "/data/payments_test.txt";
-
-    @Mock
-    private MenuRepository menuRepository;
-
     private PaymentRepository paymentRepository;
-
-    private PizzaService pizzaService;
 
     @BeforeEach
     void setUp() {
@@ -37,29 +27,26 @@ class PizzaServiceTestIntegrationStep2 {
         } catch (IOException | URISyntaxException e) {
             e.printStackTrace();
         }
-
-        MockitoAnnotations.initMocks(this);
-
         paymentRepository = new PaymentRepository(fileName);
+    }
 
+    @Test
+    void add() {
+        Payment payment = mock(Payment.class);
+
+        paymentRepository.add(payment);
+
+        assertEquals(paymentRepository.getAll().size(), 1);
+    }
+
+    @Test
+    void getAll() {
         Payment payment1 = mock(Payment.class);
         Payment payment2 = mock(Payment.class);
-        Mockito.when(payment1.getType()).thenReturn(PaymentType.CASH);
-        Mockito.when(payment2.getAmount()).thenReturn(10.0);
-        Mockito.when(payment2.getType()).thenReturn(PaymentType.CARD);
+
         paymentRepository.add(payment1);
         paymentRepository.add(payment2);
 
-        pizzaService = new PizzaService(menuRepository, paymentRepository);
-    }
-
-    @Test
-    void getPayments() {
-        assertEquals(pizzaService.getPayments().size(), 2);
-    }
-
-    @Test
-    void getTotalAmount() {
-        assertEquals(pizzaService.getTotalAmount(PaymentType.CARD), 10.0);
+        assertEquals(paymentRepository.getAll().size(), 2);
     }
 }

@@ -1,4 +1,4 @@
-package pizzashop.service;
+package pizzashop;
 
 import org.junit.jupiter.api.*;
 import org.junit.jupiter.params.ParameterizedTest;
@@ -7,6 +7,7 @@ import pizzashop.model.Payment;
 import pizzashop.model.PaymentType;
 import pizzashop.repository.MenuRepository;
 import pizzashop.repository.PaymentRepository;
+import pizzashop.service.PizzaService;
 
 import static org.junit.jupiter.api.Assertions.*;
 
