@@ -48,7 +48,7 @@ class PizzaServiceGetTotalAmountTest {
         assertEquals(service.getTotalAmount(paymentType), 0.0f);
     }
 
-    private void initService() {
+    public void initService() {
         paymentRepository = new PaymentRepository(fileName);
         service = new PizzaService(menuRepository, paymentRepository);
     }

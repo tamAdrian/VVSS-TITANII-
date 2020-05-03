@@ -1,0 +1,13 @@
+
+V
+java:S1128"4Remove this unused import 'pizzashop.model.Payment'.(êŸ·‰ùÿÿÿÿ8¶«§þœ.
+}
+java:S1450"`Remove the "paymentRepository" field and declare it as a local variable in the relevant methods.(ü†êÏ8·ñ¡þœ.
+c
+java:S1075"ARefactor your code to get this URI from a customizable parameter.(¯ÂÏÃÿÿÿÿÿ8Î«¡þœ.
+E
+java:S11483"#Use a logger to log this exception.(€ÉÔ…ýÿÿÿÿ8Àå¦þœ.
+E
+java:S1148'"#Use a logger to log this exception.(€ÉÔ…ýÿÿÿÿ8·ñ¡þœ.
+R
+java:S1128"0Remove this unused import 'org.mockito.Mockito'.(áòöˆýÿÿÿÿ8à©£þœ.
