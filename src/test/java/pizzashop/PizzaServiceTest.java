@@ -26,7 +26,7 @@ class PizzaServiceTest {
     }
 
     @DisplayName("ECP - valid table number")
-    @RepeatedTest(3)
+    @Test
     void addPaymentTableValidECP() {
         int initPayments = service.getPayments().size();
         try {
