@@ -67,20 +67,12 @@ class PizzaServiceGetTotalAmountTest {
         }
     }
 
-//    @DisplayName("test P05: 1 - 2F - 4F - 6T - 7T - 8 - 6F - 9 - 10")
+    @DisplayName("test P01: 1 - 2T - 3 - 10")
     @Test
     void testP05() {
-//        initService();
-        paymentRepository = new PaymentRepository(fileName);
+        paymentRepository = new PaymentRepository("ds.txt");
         service = new PizzaService(menuRepository, paymentRepository);
-        try {
-            service.addPayment(1, PaymentType.CASH, 10);
-            service.addPayment(1, PaymentType.CARD, 10);
-            assertEquals(service.getTotalAmount(paymentType), 10);
-        } catch (Exception e) {
-            e.printStackTrace();
-            fail();
-        }
+        assertEquals(service.getTotalAmount(paymentType), 0.0f);
     }
 
 
