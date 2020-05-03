@@ -70,7 +70,9 @@ class PizzaServiceGetTotalAmountTest {
 //    @DisplayName("test P05: 1 - 2F - 4F - 6T - 7T - 8 - 6F - 9 - 10")
     @Test
     void testP05() {
-        initService();
+//        initService();
+        paymentRepository = new PaymentRepository(fileName);
+        service = new PizzaService(menuRepository, paymentRepository);
         try {
             service.addPayment(1, PaymentType.CASH, 10);
             service.addPayment(1, PaymentType.CARD, 10);
