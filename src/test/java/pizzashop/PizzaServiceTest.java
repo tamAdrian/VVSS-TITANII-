@@ -80,7 +80,7 @@ class PizzaServiceTest {
     }
 
     @DisplayName("BVA - valid table number")
-    @RepeatedTest(3)
+    @Test
     void addPaymentTableValidBVA() {
         int initPayments = service.getPayments().size();
         try {
