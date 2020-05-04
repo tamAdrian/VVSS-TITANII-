@@ -35,7 +35,6 @@ class PizzaServiceTest {
         } catch (Exception e) {
             fail();
         }
-//        assertTrue(true);
     }
 
     @Test
@@ -101,9 +100,8 @@ class PizzaServiceTest {
     void addPaymentTableInvalidBVA() {
         try {
             service.addPayment(0, paymentType, 10);
-            assertTrue(false);
+            fail();
         } catch (Exception e) {
-            e.printStackTrace();
             assertTrue(true);
         }
     }
