@@ -1,9 +1,9 @@
 
-c
-java:S1075"ARefactor your code to get this URI from a customizable parameter.(¯ÂÏÃÿÿÿÿÿ8»øü€–.
-E
-java:S1148A"#Use a logger to log this exception.(€ÉÔ…ıÿÿÿÿ8¸†–.
-E
-java:S1148"#Use a logger to log this exception.(€ÉÔ…ıÿÿÿÿ8‡¬…€–.
-E
-java:S1148O"#Use a logger to log this exception.(€ÉÔ…ıÿÿÿÿ8ÀÊ‹–.
+x
+java:S3415("VSwap these 2 arguments so they are in the correct order: expected value, actual value.(¡áîøøÿÿÿÿ8Ø‡µÕ.
+x
+java:S3415O"VSwap these 2 arguments so they are in the correct order: expected value, actual value.(É•¸•ÿÿÿÿÿ8²‰¦Ö.
+x
+java:S34150"VSwap these 2 arguments so they are in the correct order: expected value, actual value.(¡áîøøÿÿÿÿ8Ø‡µÕ.
+x
+java:S3415?"VSwap these 2 arguments so they are in the correct order: expected value, actual value.(¡áîøøÿÿÿÿ8Ø‡µÕ.

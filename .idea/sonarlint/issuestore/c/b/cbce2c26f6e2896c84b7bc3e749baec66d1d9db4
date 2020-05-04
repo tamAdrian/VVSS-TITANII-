@@ -1,18 +1,5 @@
 
-F
-java:S1148…"#Use a logger to log this exception.(€ÉÔ…ıÿÿÿÿ8ÆíÔå‘.
-]	java:S125-"<This block of commented-out lines of code should be removed.(­õëşÿÿÿÿ8½ºáã‘.
-E
-java:S1148E"#Use a logger to log this exception.(€ÉÔ…ıÿÿÿÿ8ı˜„ä‘.
-E
-java:S1148x"#Use a logger to log this exception.(€ÉÔ…ıÿÿÿÿ8ƒÕÍå‘.
-E
-java:S1148Q"#Use a logger to log this exception.(€ÉÔ…ıÿÿÿÿ8øÃœä‘.
-E
-java:S1148j"#Use a logger to log this exception.(€ÉÔ…ıÿÿÿÿ8‡‰Éå‘.
-E
-java:S1148$"#Use a logger to log this exception.(€ÉÔ…ıÿÿÿÿ8»Îîã‘.
-E
-java:S11489"#Use a logger to log this exception.(€ÉÔ…ıÿÿÿÿ8º‡ä‘.
-E
-java:S1148^"#Use a logger to log this exception.(€ÉÔ…ıÿÿÿÿ8††¾å‘.
+I
+java:S2699,"-Add at least one assertion to this test case.(Ñ„§Y8ÇƒµÕ.
+@
+java:S1607,"$Fix or remove this skipped unit test(Ñ„§Y8ÇƒµÕ.
