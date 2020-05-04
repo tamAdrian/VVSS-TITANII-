@@ -103,12 +103,11 @@ class PizzaServiceTest {
     }
 
     @DisplayName("BVA - valid amount")
-    @ParameterizedTest
-    @ValueSource(doubles = {1, Double.MAX_VALUE})
-    void addPaymentAmountValidBVA(double amount) {
+    @Test
+    void addPaymentAmountValidBVA() {
         int initPayments = service.getPayments().size();
         try {
-            service.addPayment(2, paymentType, amount);
+            service.addPayment(2, paymentType, Double.MAX_VALUE);
             assertEquals(initPayments + 1, service.getPayments().size());
         } catch (Exception e) {
             fail();
