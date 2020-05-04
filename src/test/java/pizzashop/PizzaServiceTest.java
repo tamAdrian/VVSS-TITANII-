@@ -53,8 +53,7 @@ class PizzaServiceTest {
             service.addPayment(2, paymentType, amount);
             assertEquals(initPayments + 1, service.getPayments().size());
         } catch (Exception e) {
-            e.printStackTrace();
-            assertTrue(false);
+            fail();
         }
     }
 
@@ -63,9 +62,8 @@ class PizzaServiceTest {
     void addPaymentTableInvalidECP() {
         try {
             service.addPayment(-1, paymentType, 10);
-            assertTrue(false);
+            fail();
         } catch (Exception e) {
-            e.printStackTrace();
             assertTrue(true);
         }
     }
@@ -75,9 +73,8 @@ class PizzaServiceTest {
     void addPaymentAmountInvalidECP() {
         try {
             service.addPayment(1, paymentType, -10);
-            assertTrue(false);
+            fail();
         } catch (Exception e) {
-            e.printStackTrace();
             assertTrue(true);
         }
     }
@@ -90,8 +87,7 @@ class PizzaServiceTest {
             service.addPayment(1, paymentType, 1);
             assertEquals(initPayments + 1, service.getPayments().size());
         } catch (Exception e) {
-            e.printStackTrace();
-            assertTrue(false);
+            fail();
         }
     }
 
@@ -115,8 +111,7 @@ class PizzaServiceTest {
             service.addPayment(2, paymentType, amount);
             assertEquals(initPayments + 1, service.getPayments().size());
         } catch (Exception e) {
-            e.printStackTrace();
-            assertTrue(false);
+            fail();
         }
     }
 
@@ -126,9 +121,8 @@ class PizzaServiceTest {
     void addPaymentAmountInvalidBVA(double amount) {
         try {
             service.addPayment(1, paymentType, amount);
-            assertTrue(false);
+            fail();
         } catch (Exception e) {
-            e.printStackTrace();
             assertTrue(true);
         }
     }
